@@ -1,7 +1,8 @@
 "--------------------------------------------
 "--------->:brif:   VIM 的配置字段------------
 "--------->:Author: sandy --------------------
-"--------->:Version: v0.01 17-11-04 building 
+"--------->:Version: v0.01 17-11-04 building
+"--------->:Version: v0.02 17-11-05 add some plugin
 "--------------------------------------------
 
 set smarttab
@@ -331,20 +332,33 @@ Plugin 'bronson/vim-trailing-whitespace'
 "快速注释工具
 Plugin 'scrooloose/nerdcommenter'
 
+"cpp .h 间切换
+Plugin 'derekwyatt/vim-fswitch'
+Plugin 'a.vim'
+Plugin 'c.vim'
+"Plugin 'stl.vim'
+Plugin 'stlrefvim'
+Plugin 'cpp.vim'
+Plugin 'https://github.com/Mizuchi/STL-Syntax'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 
-
+" <<-------------------begin------------------------->
+" 主题
 " scheme "
 ""syntax enable
 ""set background=dark
 ""colorscheme solarize
 
+
+" <<-------------------begin------------------------->
 ""let g:winManagerWindowLayout='FileExplorer|TagList'
 ""nmap wm :WMToggle<cr>
 
+
+" <<-------------------begin------------------------->
 "set up NerdTree"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | NERDTree | endif
@@ -355,6 +369,7 @@ map <F9> :NERDTreeToggle<CR>
 "autocmd VimEnter * NERDTree
 "wincmd w
 
+" <<-------------------begin------------------------->
 "set up tagbar"'
 "F10触发，设置宽度为30
 let g:tagbar_width = 30
@@ -364,14 +379,17 @@ let g:tagbar_autopreview = 1
 "关闭排序,即按标签本身在文件中的位置排序
 let g:tagbar_sort = 0
 
-"set up suptab"
+" <<-------------------begin------------------------->
+"set up supertab"
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
+" <<-------------------begin------------------------->
 "setup auto pair"
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 
+" <<-------------------begin------------------------->
 "记住上次打开的位置
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -379,6 +397,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 "去掉多余的空格
 map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
 
+" <<-------------------begin------------------------->
 " 注释的时候自动加个空格, 强迫症必配
 let g:NERDSpaceDelims=1
 let mapleader=","
@@ -390,4 +409,23 @@ let mapleader=","
 ",cA，在当前行尾添加注释符，并进入Insert模式
 ",cu，取消注释
 
+"<<---------------------------------------->>
+"setup a.vim 切换头文件和源文件
+"可以设置搜索路径
+"let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
+"快捷键
+"   :A 在新 buffer 中切换；
+" 　　:AS 水平分割式切换；
+" 　　:AV 垂直分割式切换；
+" 　　:AT 新建页标签，然后切换；
+" 　　:AN 如果在指定目录下有多个同名的 c/h 文件，循环切换；』
+" 　　:IH 创建新 buffer 切换到光标下的文件；
+" 　　:IHS 同上，且创建水平窗口；
+" 　　:IHV 同 :IH，且创建垂直窗口；
+" 　　:IHT 同 :IH，切换到新建页标签；
+" 　　:IHN 同 :IH，循环切换；
+" 　　<Leader>ih 同 :IH；
+" 　　<Leader>is 功能相当于是 :IHS + :A 。效果是切换到光标下的头文件对应的源文件中。
+" 　　<Leader>ihn 同 :IHN；
+"<< ------------------------------------->>
 
