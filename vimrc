@@ -340,6 +340,14 @@ Plugin 'c.vim'
 Plugin 'stlrefvim'
 Plugin 'cpp.vim'
 Plugin 'https://github.com/Mizuchi/STL-Syntax'
+
+"快速插入代码片段
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -428,4 +436,45 @@ let mapleader=","
 " 　　<Leader>is 功能相当于是 :IHS + :A 。效果是切换到光标下的头文件对应的源文件中。
 " 　　<Leader>ihn 同 :IHN；
 "<< ------------------------------------->>
+
+" <<-------------------begin------------------------->
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
+"let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultisnips/UltiSnips"]
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" <<-------------------begin------------------------->
+" 自动补全
+" omnicppcomplete-0.41 ---- AutoComplPop
+" 配置网址:http://blog.chinaunix.net/uid-30024978-id-4830530.html
+"
+"配置cpp.vim c.vim的自动不全
+set completeopt=menu,menuone
+let OmniCpp_MayCompleteDot=1    "打开  . 操作符
+let OmniCpp_MayCompleteArrow=1  "打开 -> 操作符
+let OmniCpp_MayCompleteScope=1  "打开 :: 操作符
+let OmniCpp_NamespaceSearch=1   "打开命名空间
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_DefaultNamespace=["std"]
+let OmniCpp_ShowPrototypeInAbbr=1   "打开显示函数原型
+let OmniCpp_SelectFirstItem = 2     "自动弹出时自动跳至第一个
+""
+""要生成专用于c/c++的ctags文件，并引导vim找到改tags文件：
+""tags文件生成命令（通常位于代码项目的最上层目录下执行）
+""[admin@local]$ ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+""引导omnicppcomplete找到tags文件：
+""（1）在vim中设置：set tags+=/home/project/project_1/tags 。该方法不方便，每次使用都要set一下
+""（2）在~/.vimrc中添加常用的路径tags：
+""set tags+=/home/project/project_1/tags
+""set tags+=/home/project/project_2/tags
+""这样，每次打开vim便会自动寻找以上设置的tags文件。另外，可以通过vim中：set tags来查看已设置的tags文件路径。
 
