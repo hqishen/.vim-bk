@@ -23,7 +23,8 @@ set ruler           " 显示标尺
 set showcmd         " 输入的命令显示出来，看的清楚些
 "set whichwrap+=<,>,h,l   " 允许backspace和光标键跨越行边界(不建议)
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离
-set statusline=%m%w------------------->\ [TYPE=%Y]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}\ <------------------"状态行显示的内容
+
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)
 set foldenable      " 允许折叠
 set foldmethod=manual   " 手动折叠
@@ -359,7 +360,35 @@ filetype plugin indent on    " required
 ""syntax enable
 ""set background=dark
 ""colorscheme solarize
+"摺疊
+"set foldmethod=syntax  " 设置实用语法方式折叠
+"set foldnestmax=2   " 设置最大折叠深度
 
+" 主题 solarized
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+
+" 主题 molokai
+let g:molokai_original = 1
+" 配色方案 不同的模式有不同的效果哦
+" 配色方案
+set t_Co=256
+if has('gui_running')
+    colorscheme solarized
+    "colorscheme molokai
+    "colorscheme phd
+else
+    ""colorscheme solarized
+    colorscheme molokai
+    "colorscheme phd
+endif
+
+"高亮注释和相关的东西"
+""hi Search term=standout ctermfg=0 ctermbg=3
+highlight Comment ctermfg=DarkGrey guifg=blue
+hi Search term=standout ctermfg=0 ctermbg=yellow
 
 " <<-------------------begin------------------------->
 ""let g:winManagerWindowLayout='FileExplorer|TagList'
@@ -371,7 +400,7 @@ filetype plugin indent on    " required
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <F9> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 
 "autocmd VimEnter * wincmd w
 "autocmd VimEnter * NERDTree
@@ -381,7 +410,7 @@ map <F9> :NERDTreeToggle<CR>
 "set up tagbar"'
 "F10触发，设置宽度为30
 let g:tagbar_width = 30
-nmap <F10> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 "开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_autopreview = 1
 "关闭排序,即按标签本身在文件中的位置排序
