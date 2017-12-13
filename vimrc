@@ -85,23 +85,23 @@ func SetTitle()
         call setline(2,"#*************************************************")
         call setline(3,"#**********File Name:")
         call setline(4,"#**********Function :")
-        call setline(5,"#**********Author   :Sandy")
+        call setline(5,"#**********Author   :Sundae")
         call setline(6,"#**********Email    :hqishen@126.com")
         call setline(7,"#*************************************************")
         call append(line(".")+8, "")
     elseif expand("%:e") == 'py'
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"#!--- coding=utf-8 ---*/")
-        call append(line(".")+1,"'''***************************************************")
-        call append(line(".")+2, " > File Name   : ".expand("%"))
-        call append(line(".")+3, " > Company     : Huizhou Desay SV Automotive")
-        call append(line(".")+4, " > Unit        : Central Techonlogy")
-        call append(line(".")+5, " > Created Time: ".strftime("%c"))
-        call append(line(".")+6, " > Function    : " )
-        call append(line(".")+7, " > Author      : Sandy" )
-        call append(line(".")+8, " > Email       : hqishen@126.com" )
-        call append(line(".")+9,"***************************************************'''")
-        call append(line(".")+10, "")
+""        call append(line(".")+1,"'''***************************************************")
+""        call append(line(".")+2, " > File Name   : ".expand("%"))
+""        call append(line(".")+3, " > Company     : Huizhou Desay SV Automotive")
+""        call append(line(".")+4, " > Unit        : Central Techonlogy")
+""        call append(line(".")+5, " > Created Time: ".strftime("%c"))
+""        call append(line(".")+6, " > Function    : " )
+""        call append(line(".")+7, " > Author      : Sandy" )
+""        call append(line(".")+8, " > Email       : hqishen@126.com" )
+""        call append(line(".")+9,"***************************************************'''")
+""        call append(line(".")+10, "")
     elseif expand("%:e") == 'ruby'
         call setline(1,"#!/usr/bin/env ruby")
         call append(line("."),"# encoding: utf-8")
@@ -109,14 +109,14 @@ func SetTitle()
         "    elseif &filetype == 'mkd'
         "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
     else
-        call setline(1, "/*************************************************************************")
-        call append(line("."), "	> File Name  : ".expand("%"))
-        call append(line(".")+1, "	> Company    : Huizhou Desay SV Automotive")
-        call append(line(".")+2, "	> Unit       : Central Techonlogy")
-        call append(line(".")+3, "	> Created Time: ".strftime("%c"))
-        call append(line(".")+4, "    > Function   : " )
-        call append(line(".")+5, " ************************************************************************/")
-        call append(line(".")+6, "")
+""        call setline(1, "/*************************************************************************")
+""        call append(line("."), "	> File Name  : ".expand("%"))
+""        call append(line(".")+1, "	> Company    : Huizhou Desay SV Automotive")
+""        call append(line(".")+2, "	> Unit       : Central Techonlogy")
+""        call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+""        call append(line(".")+4, "    > Function   : " )
+""        call append(line(".")+5, " ************************************************************************/")
+""        call append(line(".")+6, "")
     endif
     if expand("%:e") == 'cpp'
         call append(line(".")+7, "#include <iostream>")
@@ -365,10 +365,10 @@ filetype plugin indent on    " required
 "set foldnestmax=2   " 设置最大折叠深度
 
 " 主题 solarized
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
+""let g:solarized_termcolors=256
+""let g:solarized_termtrans=1
+""let g:solarized_contrast="normal"
+""let g:solarized_visibility="normal"
 
 " 主题 molokai
 let g:molokai_original = 1
@@ -506,4 +506,8 @@ let OmniCpp_SelectFirstItem = 2     "自动弹出时自动跳至第一个
 ""set tags+=/home/project/project_1/tags
 ""set tags+=/home/project/project_2/tags
 ""这样，每次打开vim便会自动寻找以上设置的tags文件。另外，可以通过vim中：set tags来查看已设置的tags文件路径。
+
+set tags=tags;
+set autochdir
+map <c-]> g<c-]>
 
